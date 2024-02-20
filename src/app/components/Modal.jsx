@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import Button from "./Button";
 
 const Modal = forwardRef(function Modal({ children, ...props }, ref) {
+  
   const dialog = useRef();
 
   useImperativeHandle(ref, () => {

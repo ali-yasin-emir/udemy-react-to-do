@@ -3,7 +3,7 @@
 import Button from "./Button";
 import Projects from "./Projects";
 
-const Aside = ({projects, createNewProject, showProject }) => {
+const Aside = ({projects, createNewProject, showProject, currentProjectId }) => {
 
   return (
     <aside className="cursor-pointer rounded-lg h-screen w-[360px] bg-slate-900 flex flex-col px-12 pt-16 gap-8">
@@ -13,7 +13,7 @@ const Aside = ({projects, createNewProject, showProject }) => {
         className="w-[140px] font-medium hover:brightness-150 transition-all ease-in-out duration-200"
         text="+ add project"
       />
-      <Projects showProject={showProject} projects={projects}  />
+      <Projects currentProjectId={currentProjectId} showProject={showProject} projects={projects}  />
     </aside>
   );
 };

@@ -1,12 +1,13 @@
 import Button from "./Button";
 import Input from "./Input";
+import Tasks from "./Tasks";
 
-const Project = ({project}) => {
+const Project = ({project, deleteProject, addTask, clearTask, tasks}) => {
 
   const formattedDate = new Date(project.date).toLocaleDateString("tr-TR", {
     year: "numeric",
     month: "short",
-    day: "numeric"
+    day: "numeric",
   })
 
   return (
@@ -15,6 +16,7 @@ const Project = ({project}) => {
         <div className="flex justify-between">
           <h1 className="mb-4 text-4xl font-semibold">{project.title}</h1>
           <Button
+            onClick={deleteProject}
             text="delete"
             className="bg-transparent text-white font-extralight border-[1px]"
           />
@@ -27,35 +29,9 @@ const Project = ({project}) => {
         </p>
         <hr className="h-[1px] w-full bg-white" />
       </div>
-      <div className="flex flex-col w-[600px]">
-        <h1 className="mb-4 text-4xl font-semibold">Tasks</h1>
-        <div className="flex gap-4 items-center mb-6">
-          <Input />{" "}
-          <Button
-            text="add task"
-            className="border-[1px] bg-transparent text-gray-50 font-normal"
-          />
-        </div>
-        {/* <p className="">This project does not have any tasks yet.</p> */}
-        <div className="flex flex-col gap-4 w-full">
-          <div className="flex p-4 bg-neutral-300 justify-between items-center">
-            <p className="w-full">Learn the basics.</p>
-            <span className="cursor-pointer">Clear</span>
-          </div>
-          <div className="flex p-4 bg-neutral-300 justify-between items-center">
-            <p className="w-full">Learn the basics.</p>
-            <span className="cursor-pointer">Clear</span>
-          </div>
-          <div className="flex p-4 bg-neutral-300 justify-between items-center">
-            <p className="w-full">Learn the basics.</p>
-            <span className="cursor-pointer">Clear</span>
-          </div>
-          <div className="flex p-4 bg-neutral-300 justify-between items-center">
-            <p className="w-full">Learn the basics.</p>
-            <span className="cursor-pointer">Clear</span>
-          </div>
-        </div>
-      </div>
+
+        <Tasks tasks={tasks} addTask={addTask} clearTask={clearTask}/>
+
     </div>
   );
 };
